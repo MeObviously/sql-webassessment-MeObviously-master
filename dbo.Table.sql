@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[tblLostProp]
+(
+	[Id] INT NOT NULL IDENTITY (0,1) PRIMARY KEY,
+	[Item] VARCHAR(50) NOT NULL,
+	[Brand] VARCHAR(20) NOT NULL,
+	[Size] VARCHAR(10) NOT NULL,
+	[Colour(s)] VARCHAR(50) NOT NULL,
+	[isNamed] BIT NOT NULL,
+)
