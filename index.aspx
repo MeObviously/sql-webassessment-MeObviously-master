@@ -37,7 +37,7 @@
 				
 		    <!-- Logo goes here -->
 			
-		    <h1>St Callahans College Lost Property</h1>
+		    <h1>St Callahan's College Lost Property</h1>
 
 	    </div> <!-- End of navbar-header -->
 	
@@ -57,10 +57,10 @@
     <div class="container">
 	    <div class="main">
 
-	        <h1>Enter an Item</h1>
+	        <h2>Enter an Item</h2>
             
             <form id="form1" runat="server">
-                <asp:Panel ID="pnlLostPropIndex" runat="server" BackColor="#E0E8F9">
+                <asp:Panel ID="pnlLostPropIndex" runat="server" BackColor="#707793">
 
                 <!-- Item -->
                 <p><strong>Item<sup>*</sup>:</strong><br />
