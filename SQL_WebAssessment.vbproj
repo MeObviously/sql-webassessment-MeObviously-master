@@ -101,6 +101,8 @@
     </Content>
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\st_callahan_custom.css" />
+    <Content Include="footer.html" />
+    <Content Include="header_nav.html" />
     <Content Include="index.aspx" />
     <Content Include="index.html" />
     <Content Include="search.aspx" />

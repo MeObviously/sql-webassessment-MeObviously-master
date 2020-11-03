@@ -112,13 +112,9 @@
     </div> <!-- container (around main div) end-->
 
      <!-- Footer starts below -->
-	 <footer class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-        <div class="container">
-            <div class="navbar-text pull-right">
-                &copy; 2020 Lucas Abbott
-            </div>
-        </div>
-    </footer>
+	
+    <%Response.WriteFile("footer.html") %>
+
     <!-- Footer ends above -->
 
 <!-- Link to JavaScipt plugins, needed for things like the dropdown menu to work.  BOTH files are required. -->
