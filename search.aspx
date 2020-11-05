@@ -1,15 +1,5 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="search.aspx.vb" Inherits="SQL_WebAssessment.search" %>
 
-<!DOCTYPE html>
+<%Response.WriteFile("header_nav.html") %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
+This is the search page...

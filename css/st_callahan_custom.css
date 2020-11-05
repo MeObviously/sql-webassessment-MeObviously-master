@@ -17,7 +17,7 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #ff0000;
+    color: #800000;
     font-weight: bold;
 }
 
@@ -33,6 +33,7 @@ h2 {
 .navbar.navbar-inverse.navbar-fixed-bottom {
     background-color: #3BBA9C;
     color: black;
+    text-align: right;
 }
 
 #pnlBookingForm {

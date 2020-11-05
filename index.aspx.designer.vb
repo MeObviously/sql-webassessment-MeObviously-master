@@ -41,6 +41,24 @@ Partial Public Class index
     Protected WithEvents txtItem As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''revItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revItem As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''rfvItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvItem As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''txtBrand control.
     '''</summary>
     '''<remarks>
@@ -50,13 +68,22 @@ Partial Public Class index
     Protected WithEvents txtBrand As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtSize control.
+    '''revBrand control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSize As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents revBrand As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''rfvBrand control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvBrand As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''txtColour control.
@@ -68,13 +95,40 @@ Partial Public Class index
     Protected WithEvents txtColour As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txtNamedTorF control.
+    '''refColour control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtNamedTorF As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents refColour As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''rfvColour control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvColour As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''DropDownList1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''ddlNamedTorF control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlNamedTorF As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''TextBox6 control.

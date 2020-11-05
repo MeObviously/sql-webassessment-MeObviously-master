@@ -99,6 +99,7 @@
     <Content Include="App_Data\EmptyDB_log.ldf">
       <DependentUpon>EmptyDB.mdf</DependentUpon>
     </Content>
+    <Content Include="contact.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\st_callahan_custom.css" />
     <Content Include="footer.html" />
@@ -109,6 +110,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="contact.aspx.designer.vb">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="contact.aspx.vb">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="index.aspx.designer.vb">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
