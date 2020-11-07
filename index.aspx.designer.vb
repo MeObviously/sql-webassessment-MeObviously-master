@@ -41,15 +41,6 @@ Partial Public Class index
     Protected WithEvents txtItem As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''revItem control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents revItem As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
     '''rfvItem control.
     '''</summary>
     '''<remarks>
@@ -66,15 +57,6 @@ Partial Public Class index
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtBrand As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''revBrand control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents revBrand As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''rfvBrand control.
@@ -95,15 +77,6 @@ Partial Public Class index
     Protected WithEvents txtColour As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''refColour control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents refColour As Global.System.Web.UI.WebControls.RegularExpressionValidator
-
-    '''<summary>
     '''rfvColour control.
     '''</summary>
     '''<remarks>
@@ -113,13 +86,22 @@ Partial Public Class index
     Protected WithEvents rfvColour As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''DropDownList1 control.
+    '''ddlSize control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlSize As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''rfvSize control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvSize As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''ddlNamedTorF control.
@@ -131,13 +113,13 @@ Partial Public Class index
     Protected WithEvents ddlNamedTorF As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox6 control.
+    '''txtName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox6 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSubmit control.
