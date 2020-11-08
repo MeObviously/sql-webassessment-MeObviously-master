@@ -44,15 +44,7 @@
                         <strong>Size<sup>*</sup>:</strong><br />
                         <asp:DropDownList ID="ddlSize" runat="server">
                             <asp:ListItem Value="--Choose--">--Choose--</asp:ListItem>
-                          <%--  <asp:ListItem Enabled="False">XXS</asp:ListItem>
-                            <asp:ListItem Enabled="False">XS</asp:ListItem>
-                            <asp:ListItem Enabled="False">S</asp:ListItem>
-                            <asp:ListItem Enabled="False">M</asp:ListItem>
-                            <asp:ListItem Enabled="False">L</asp:ListItem>
-                            <asp:ListItem Enabled="False">XL</asp:ListItem>
-                            <asp:ListItem Enabled="False">XXL</asp:ListItem>
-                            <asp:ListItem Enabled="False">XXXL</asp:ListItem>--%>
-
+                            <asp:ListItem>(Shirt Sizes)</asp:ListItem>
                             <asp:ListItem>XXS</asp:ListItem>
                             <asp:ListItem>XS</asp:ListItem>
                             <asp:ListItem>S</asp:ListItem>
@@ -61,8 +53,26 @@
                             <asp:ListItem>XL</asp:ListItem>
                             <asp:ListItem>XXL</asp:ListItem>
                             <asp:ListItem>XXXL</asp:ListItem>
+                            <asp:ListItem>(Foot Sizes)</asp:ListItem>
+                            <asp:ListItem>M6</asp:ListItem>
+                            <asp:ListItem>M6.5</asp:ListItem>
+                            <asp:ListItem>M7</asp:ListItem>
+                            <asp:ListItem>M7.5</asp:ListItem>
+                            <asp:ListItem>M8</asp:ListItem>
+                            <asp:ListItem>M8.5</asp:ListItem>
+                            <asp:ListItem>M9</asp:ListItem>
+                            <asp:ListItem>M9.5</asp:ListItem>
+                            <asp:ListItem>M10</asp:ListItem>
+                            <asp:ListItem>M10.5</asp:ListItem>
+                            <asp:ListItem>M11</asp:ListItem>
+                            <asp:ListItem>M11.5</asp:ListItem>
+                            <asp:ListItem>M12</asp:ListItem>
+                            <asp:ListItem>M12.5</asp:ListItem>
+                            <asp:ListItem>M13</asp:ListItem>
+                            <asp:ListItem>M13.5</asp:ListItem>
+                            <asp:ListItem>M14</asp:ListItem>
                         </asp:DropDownList>
-                         <asp:RequiredFieldValidator ID="rfvSize" runat="server" InitialValue="--Choose--" ControlToValidate="ddlSize" Display="Dynamic" ErrorMessage="SizeRequired">A size is required.</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="rfvSize" runat="server" InitialValue="--Choose--" ControlToValidate="ddlSize" Display="Dynamic" ErrorMessage="SizeRequired">A size is required.</asp:RequiredFieldValidator>
                     </p>
                 <br />
                 <br />
@@ -70,11 +80,12 @@
                 <!-- Named? T/F -->
                     <p>
                         <strong>Named?<sup>*</sup>:</strong><br />
-                        <asp:DropDownList ID="ddlNamedTorF" runat="server">
+                        <asp:DropDownList ID="ddlNamed" runat="server">
                             <asp:ListItem Value="--Choose--">--Choose--</asp:ListItem>
-                            <asp:ListItem Enabled="False">Yes</asp:ListItem>
-                            <asp:ListItem Enabled="False">No</asp:ListItem>
+                            <asp:ListItem>Yes</asp:ListItem>
+                            <asp:ListItem>No</asp:ListItem>
                         </asp:DropDownList>
+                         <asp:RequiredFieldValidator ID="rfvNamed" runat="server" InitialValue="--Choose--" ControlToValidate="ddlNamed" Display="Dynamic" ErrorMessage="AnswerRequired">Please choose an option.</asp:RequiredFieldValidator>
                     </p>
                 <br />
                 <br />

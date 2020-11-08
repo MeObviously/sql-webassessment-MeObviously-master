@@ -104,13 +104,22 @@ Partial Public Class index
     Protected WithEvents rfvSize As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
-    '''ddlNamedTorF control.
+    '''ddlNamed control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlNamedTorF As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ddlNamed As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''rfvNamed control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvNamed As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''txtName control.

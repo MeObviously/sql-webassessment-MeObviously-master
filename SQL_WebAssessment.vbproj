@@ -95,9 +95,9 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\EmptyDB.mdf" />
-    <Content Include="App_Data\EmptyDB_log.ldf">
-      <DependentUpon>EmptyDB.mdf</DependentUpon>
+    <Content Include="App_Data\dbLostProperty.mdf" />
+    <Content Include="App_Data\dbLostProperty_log.ldf">
+      <DependentUpon>dbLostProperty.mdf</DependentUpon>
     </Content>
     <Content Include="contact.aspx" />
     <Content Include="css\bootstrap.min.css" />
