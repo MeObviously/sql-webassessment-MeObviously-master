@@ -2,4 +2,15 @@
 
 <%Response.WriteFile("header_nav.html") %>
 
-This is the contact page...
+<div class="container">
+            <div class="main">
+                <h1>Search</h1>
+                <p>
+                    This is the contact page.
+                </p>
+            </div>
+        </div>
+    </body>
+
+    <%Response.WriteFile("footer.html") %>
+</html>

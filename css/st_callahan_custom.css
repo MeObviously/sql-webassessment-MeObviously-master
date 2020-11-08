@@ -1,23 +1,25 @@
 body {
-    background-color: #2E3047;
+    background-color: rgba(128, 128, 230, 0.5);
 }
 
+/* Navigation related styling */
 .navbar.navbar-default {
-    background-color: #3BBA9C;
+    background-color: #010C22;
 }
 
 .navbar.navbar-default > .navbar-header > h1 {
-        color: #3C3F58;
+        color: white;
         padding-left: 25px;
 }
 
+/* Normal links in navbar */
 .navbar-default .navbar-nav > li > a:link {
-    color: #3C3F58;
+    color: white;
     font-weight: bold;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #800000;
+    color: #720543;
     font-weight: bold;
 }
 
@@ -26,23 +28,56 @@ body {
     font-weight: bold;
 }
 
-h2 {
-    color: #3BBA9C
-}
-
 .navbar.navbar-inverse.navbar-fixed-bottom {
-    background-color: #3BBA9C;
-    color: black;
+    background-color: #010C22;
+    color: white;
     text-align: right;
 }
 
+/* Panel related styling*/
 #pnlBookingForm {
     padding-left: 10px;
     padding-top: 10px;
 }
 
- sup {
+/* Form related styling */
+sup {
      color: red;
  }
 
+ /* Results table styling */
+table.results {
+    text-align: left;
+    border: 3px solid black;
+    border-collapse: collapse;
+ }
 
+tr.results {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    height: 24px;
+}
+
+th.results {
+    height: 36px;
+    vertical-align: middle;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #010C22;
+    color: #ffffff;
+}
+
+tr.results:nth-child(even) {
+    background-color: rgb(128, 128, 230);
+}
+
+tr.results:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+td.results {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+}

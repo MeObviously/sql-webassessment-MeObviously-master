@@ -9,7 +9,7 @@
 	        <h2>Enter an Item</h2>
             
             <form id="form1" runat="server">
-                <asp:Panel ID="pnlLostPropIndex" runat="server" BackColor="#707793">
+                <asp:Panel ID="pnlLostPropIndex" runat="server" BackColor="#E0E8F9">
 
                 <!-- Item -->
                     <p>

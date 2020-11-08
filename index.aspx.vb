@@ -68,7 +68,7 @@ Public Class index
             sqlCmd.ExecuteNonQuery()
 
             ' Success message for user
-            MsgBox("Your listing has been accepted.",, "St Callahan's College")
+            'MsgBox("Your listing has been accepted.",, "St Callahan's College")
             Call ClearForm()
 
         Catch ex As Exception
@@ -82,6 +82,10 @@ Public Class index
             End If
 
         End Try
+
+        Call SetSessionID(strItem, strBrand, strColour, strSize, bitNamed, strName)
+        ' Redirect the user to feedback page
+        Response.Redirect("success.aspx")
 
     End Sub
 
@@ -97,5 +101,68 @@ Public Class index
         ddlNamed.Text = "--Choose--"
         txtName.Text = ""
 
+    End Sub
+
+    ''' <summary>
+    ''' Uses the user input to rettrieve the ID of the latest record saved to the database. It then adds the ID to the session object for use on the success page.
+    ''' </summary>
+    ''' <param name="strItem">Item from the form</param>
+    ''' <param name="strBrand">Brand from the form</param>
+    ''' <param name="strColour">Colours from the forms</param>
+    ''' <param name="strSize">Size from the form</param>
+    ''' <param name="bitNamed">Yes/No properties of Named from the form</param>
+    ''' <param name="strName">Name from the form</param>
+    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, bitNamed As String, strName As String)
+        ' Create new sql statement 
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
+
+        ' Objects for communication with database
+        Dim strConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\dbLostProperty.mdf';Integrated Security=True"
+        Dim sqlCmd As SqlCommand
+        Dim sqlConn As New SqlConnection(strConn)
+        Dim sqlDA As New SqlDataAdapter
+        Dim ds As New DataSet
+
+        Try
+            ' Open connection
+            sqlConn.Open()
+            sqlCmd = New SqlCommand(strSQL, sqlConn)
+
+            With sqlCmd.Parameters
+                .AddWithValue("@item", strItem)
+                .AddWithValue("@brand", strBrand)
+                .AddWithValue("@colour", strColour)
+                .AddWithValue("@size", strSize)
+                .AddWithValue("@named", bitNamed)
+                .AddWithValue("@name", strName)
+            End With
+
+            ' Run query and fill dataset
+            sqlDA.SelectCommand = sqlCmd
+            sqlDA.Fill(ds)
+
+            ' Check a row has been returned
+            If ds.Tables(0).Rows.Count > 0 Then
+                Dim intID As Integer = ds.Tables(0).Rows(0).Item(0)
+
+                ' Set session object *LID = ListingsID
+                Session("LID") = intID
+            End If
+
+        Catch ex As Exception
+            ' Failure message for user
+            MsgBox("An error occured while processing your request.",, "Processing Error")
+
+        Finally
+            ' Tidy up resources
+            sqlDA.Dispose()
+            ds.Dispose()
+
+            ' Check connection status and close
+            If sqlConn.State = ConnectionState.Open Then
+                sqlConn.Close()
+            End If
+
+        End Try
     End Sub
 End Class

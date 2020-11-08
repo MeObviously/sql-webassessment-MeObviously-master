@@ -107,6 +107,7 @@
     <Content Include="index.aspx" />
     <Content Include="index.html" />
     <Content Include="search.aspx" />
+    <Content Include="success.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="search.aspx.vb">
       <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="success.aspx.designer.vb">
+      <DependentUpon>success.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="success.aspx.vb">
+      <DependentUpon>success.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
