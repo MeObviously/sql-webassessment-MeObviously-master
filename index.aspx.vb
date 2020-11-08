@@ -1,4 +1,6 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Configuration
+
 Public Class index
     Inherits System.Web.UI.Page
 

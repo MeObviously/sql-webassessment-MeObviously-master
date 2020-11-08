@@ -81,3 +81,16 @@ td.results {
     border-bottom: 1px solid black;
     border-right: 1px solid black;
 }
+
+/* Emphasis on div styling */
+div.one {
+    background-color: rgba(128, 128, 230, 0.5);
+    border: 1px solid #010C22;
+    padding-top: 15px;
+}
+
+div.two {
+    background-color: #ffffff;
+    border: 1px solid #010C22;
+    padding-top: 15px;
+}

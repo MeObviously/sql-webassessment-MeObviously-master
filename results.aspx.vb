@@ -1,15 +1,26 @@
-﻿Imports System.Data.SqlClient
-
-Public Class success
+﻿Public Class results
     Inherits System.Web.UI.Page
 
     ''' <summary>
-    ''' Queries database for recently inserted record form index page based on Session("LID"). 
-    ''' It thencreates a table using a StringBuilder object to display the data in a placeholder object on the success.aspx.vb page.
+    ''' On load, this sub retrieves a DataSet from the session object and then call DisplayTable passin in ds.
     ''' </summary>
+    ''' <see> DisplayTable </see>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        ' Grab DataSet from session object
+        Dim ds As DataSet = Session("results")
+
+        Call DisplayTable(ds)
+    End Sub
+
+    ''' <summary>
+    '''     Displays results of DataSet created on search page.
+    ''' </summary>
+    ''' <param name="ds"></param>
+    Private Sub DisplayTable(ds As DataSet)
         ' StringBuilder to create table
         Dim strBuilder As StringBuilder = New StringBuilder()
 
@@ -28,14 +39,6 @@ Public Class success
         'Close header row
         strBuilder.Append("</tr>")
 
-        ' Create new sql statement
-        Dim strSQL As String = "SELECT * FROM tblLostProp WHERE [Id] = " & Session("LID")
-        Dim sqlCmd As New SqlCommand()
-        sqlCmd.CommandText = strSQL
-
-        ' Add table data row
-        Dim ds As DataSet = QueryDB(sqlCmd)
-
         ' Loop through rows to display.
         'At the moment, this should only display one record, bnut we may choose to display multiple records at a later data.
         For Each row As DataRow In ds.Tables(0).Rows
@@ -51,10 +54,14 @@ Public Class success
             strBuilder.Append("</tr>")
         Next
 
-        'Close table and add to placeholder
+        'Close table
         strBuilder.Append("</table>")
-        plhDataTable.Controls.Add(New LiteralControl(strBuilder.ToString()))
 
+
+        ' Link to return to search 
+        strBuilder.Append("<br /><a href=""search.aspx"">Return to search</a>")
+
+        ' Show table in placeholder
+        plhResults.Controls.Add(New LiteralControl(strBuilder.ToString()))
     End Sub
-
 End Class
