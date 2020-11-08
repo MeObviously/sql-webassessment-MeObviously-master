@@ -36,7 +36,6 @@ Public Class index
         Dim strName As String = txtName.Text
 
         ' Inset new record
-        Dim strConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\dbLostProperty.mdf';Integrated Security=True"
         Dim strSQL As String = "INSERT INTO tblLostProp ([Item], [Brand], [Colour], [Size], [Named], [Name]) VALUES ("
         strSQL &= "@item, @brand, @colour, @size, @named, @name)"
         Dim sqlCmd As SqlCommand
@@ -104,7 +103,8 @@ Public Class index
     End Sub
 
     ''' <summary>
-    ''' Uses the user input to rettrieve the ID of the latest record saved to the database. It then adds the ID to the session object for use on the success page.
+    ''' Uses the user input to rettrieve the ID of the latest record saved to the database.
+    ''' It then adds the ID to the session object for use on the success page.
     ''' </summary>
     ''' <param name="strItem">Item from the form</param>
     ''' <param name="strBrand">Brand from the form</param>
@@ -117,52 +117,28 @@ Public Class index
         Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
 
         ' Objects for communication with database
-        Dim strConn As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\dbLostProperty.mdf';Integrated Security=True"
-        Dim sqlCmd As SqlCommand
-        Dim sqlConn As New SqlConnection(strConn)
-        Dim sqlDA As New SqlDataAdapter
-        Dim ds As New DataSet
+        Dim sqlCmd As New SqlCommand
 
-        Try
-            ' Open connection
-            sqlConn.Open()
-            sqlCmd = New SqlCommand(strSQL, sqlConn)
 
-            With sqlCmd.Parameters
-                .AddWithValue("@item", strItem)
-                .AddWithValue("@brand", strBrand)
-                .AddWithValue("@colour", strColour)
-                .AddWithValue("@size", strSize)
-                .AddWithValue("@named", bitNamed)
-                .AddWithValue("@name", strName)
-            End With
+        ' Complete query
+        With sqlCmd.Parameters
+            .AddWithValue("@item", strItem)
+            .AddWithValue("@brand", strBrand)
+            .AddWithValue("@colour", strColour)
+            .AddWithValue("@size", strSize)
+            .AddWithValue("@named", bitNamed)
+            .AddWithValue("@name", strName)
+        End With
 
-            ' Run query and fill dataset
-            sqlDA.SelectCommand = sqlCmd
-            sqlDA.Fill(ds)
+        sqlCmd.CommandText = strSQL
+        Dim ds As DataSet = QueryDB(sqlCmd)
 
-            ' Check a row has been returned
-            If ds.Tables(0).Rows.Count > 0 Then
-                Dim intID As Integer = ds.Tables(0).Rows(0).Item(0)
+        ' Check a row has been returned.
+        If ds.Tables(0).Rows.Count > 0 Then
+            Dim intID As Integer = ds.Tables(0).Rows(0).Item(0)
 
-                ' Set session object *LID = ListingsID
-                Session("LID") = intID
-            End If
-
-        Catch ex As Exception
-            ' Failure message for user
-            MsgBox("An error occured while processing your request.",, "Processing Error")
-
-        Finally
-            ' Tidy up resources
-            sqlDA.Dispose()
-            ds.Dispose()
-
-            ' Check connection status and close
-            If sqlConn.State = ConnectionState.Open Then
-                sqlConn.Close()
-            End If
-
-        End Try
+            ' Set Seesion object 
+            Session("LID") = intID
+        End If
     End Sub
 End Class

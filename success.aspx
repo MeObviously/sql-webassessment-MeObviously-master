@@ -9,26 +9,10 @@
                     You have made a listing. Your lost item has now been reported to the school.
                 </p>
 
-                <!-- Table placeholder for user results -->
-                <table class="results">
-                    <tr class="results">
-                        <th class="results">Item</th>
-                        <th class="results">Brand</th>
-                        <th class="results">Colour</th>
-                        <th class="results">Size</th>
-                        <th class="results">Named</th>
-                        <th class="results">Name</th>
-                    </tr>
+              <asp:PlaceHolder ID="plhDataTable" runat="server">
 
-                    <tr class="results">
-                        <td class="results">Bag</td>
-                        <td class="results">Animas</td>
-                        <td class="results">Black</td>
-                        <td class="results">M</td>
-                        <td class="results">Yes</td>
-                        <td class="results">Michael G.</td>
-                    </tr>
-                </table>
+              </asp:PlaceHolder>
+
             </div>
         </div>
     </body>
