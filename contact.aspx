@@ -2,15 +2,31 @@
 
 <%Response.WriteFile("header_nav.html") %>
 
-<div class="container">
-            <div class="main">
-                <h1>Search</h1>
-                <p>
-                    This is the contact page.
-                </p>
-            </div>
+
+
+    <div class="container">
+        <div class="main">
+
+            <asp:Panel ID="pnlSearch" runat="server">
+
+            <h1>Contact</h1>
+
+
+            <p>
+                For further information, contact us at:
+
+                    <ul>
+                        Phone: 64 1 324 3546<br />
+                        Email: stcallahancollege@decoymail.com
+                    </ul>
+            </p>
+            <br />
+
         </div>
-    </body>
+    </div>
+</asp:Panel>
+
+</body>
 
     <%Response.WriteFile("footer.html") %>
 </html>

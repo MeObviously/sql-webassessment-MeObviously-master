@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class index
 
     '''<summary>
+    '''plhError control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents plhError As Global.System.Web.UI.WebControls.PlaceHolder
+
+    '''<summary>
     '''form1 control.
     '''</summary>
     '''<remarks>
@@ -50,6 +59,15 @@ Partial Public Class index
     Protected WithEvents rfvItem As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
+    '''revItem control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revItem As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''txtBrand control.
     '''</summary>
     '''<remarks>
@@ -68,6 +86,15 @@ Partial Public Class index
     Protected WithEvents rfvBrand As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
+    '''revBrand control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revBrand As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''txtColour control.
     '''</summary>
     '''<remarks>
@@ -84,6 +111,15 @@ Partial Public Class index
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents rfvColour As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''revColour control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revColour As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''ddlSize control.
@@ -129,6 +165,15 @@ Partial Public Class index
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''revName control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revName As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''btnSubmit control.

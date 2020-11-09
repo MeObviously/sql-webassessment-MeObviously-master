@@ -12,4 +12,13 @@ Option Explicit On
 
 
 Partial Public Class contact
+
+    '''<summary>
+    '''pnlSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnlSearch As Global.System.Web.UI.WebControls.Panel
 End Class

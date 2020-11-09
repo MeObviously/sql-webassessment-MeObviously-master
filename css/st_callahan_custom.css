@@ -19,7 +19,7 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color: #720543;
+    color: #c1d1f2;
     font-weight: bold;
 }
 
@@ -93,4 +93,18 @@ div.two {
     background-color: #ffffff;
     border: 1px solid #010C22;
     padding-top: 15px;
+}
+
+div.main {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top:1px;
+}
+
+
+/* Error styling */
+div.error {
+    background-color: darksalmon;
+    color: red;
 }

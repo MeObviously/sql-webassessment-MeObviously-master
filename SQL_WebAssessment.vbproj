@@ -108,6 +108,7 @@
     <Content Include="index.html" />
     <Content Include="results.aspx" />
     <Content Include="search.aspx" />
+    <Content Include="App_Data\SQLLoadDataQuery.sql" />
     <Content Include="success.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

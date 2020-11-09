@@ -7,42 +7,53 @@
 	    <div class="main">
 
 	        <h2>Enter an Item</h2>
+            <!-- Instructions -->
+            <p>
+                Fields marked with an <sup>*</sup> are required.
+            </p>
+            <asp:PlaceHolder ID="plhError" runat="server">
+
+            </asp:PlaceHolder>
             
+
+            <!-- Listing form start -->
             <form id="form1" runat="server">
-                <asp:Panel ID="pnlLostPropIndex" runat="server" BackColor="#E0E8F9">
+                <asp:Panel ID="pnlLostPropIndex" runat="server">
+
+                    <br />
 
                 <!-- Item -->
                     <p>
-                        <strong>Item<sup>*</sup>:</strong><br />
-                        <asp:TextBox ID="txtItem" runat="server" Height="24px" Width="340px"></asp:TextBox>
+                        &emsp;<strong>Item<sup>*</sup>:</strong><br />
+                        &emsp;<asp:TextBox ID="txtItem" runat="server" Height="24px" Width="340px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvItem" runat="server" ErrorMessage="ItemRequired" ControlToValidate="txtItem" Display="Dynamic">Please enter an item.</asp:RequiredFieldValidator>
+                          <asp:RegularExpressionValidator ID="revItem" runat="server" ControlToValidate="txtItem" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[A-Za-z]*$">Item cannot contain numbers.</asp:RegularExpressionValidator>
                     </p>
-                    <br />
-                    <br />
-                
+                    <br />   
+                    
                 <!-- Brand -->
                     <p>
-                        <strong>Brand<sup>*</sup>:</strong><br />
-                        <asp:TextBox ID="txtBrand" runat="server" Height="24px" Width="340px"></asp:TextBox>
+                        &emsp;<strong>Brand<sup>*</sup>:</strong><br />
+                        &emsp;<asp:TextBox ID="txtBrand" runat="server" Height="24px" Width="340px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvBrand" runat="server" ControlToValidate="txtBrand" Display="Dynamic" ErrorMessage="BrandRequired">Please enter a brand.</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revBrand" runat="server" ControlToValidate="txtBrand" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[A-Za-z]*$">Brand cannot contain numbers.</asp:RegularExpressionValidator>
                     </p>
-                    <br />
                     <br />
                
                 <!-- Colour -->
                     <p>
-                        <strong>Colour(s)<sup>*</sup>:</strong><br />
-                        <asp:TextBox ID="txtColour" runat="server" Height="24px" Width="340px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvColour" runat="server" ControlToValidate="txtColour" Display="Dynamic" ErrorMessage="ColourRequired">Please enter a colour(s).</asp:RequiredFieldValidator>
+                        &emsp;<strong>Colour(s)<sup>*</sup>:</strong><br />
+                        &emsp;<asp:TextBox ID="txtColour" runat="server" Height="24px" Width="340px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvColour" runat="server" ControlToValidate="txtColour" Display="Dynamic" ErrorMessage="ColourRequired">Please enter a colour.</asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="revColour" runat="server" ControlToValidate="txtColour" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[A-Za-z]*$">Colour cannot contain numbers.</asp:RegularExpressionValidator>
                     </p>
-                    <br />
                     <br />
             
                     
                 <!-- Size -->
                     <p>
-                        <strong>Size<sup>*</sup>:</strong><br />
-                        <asp:DropDownList ID="ddlSize" runat="server">
+                        &emsp;<strong>Size<sup>*</sup>:</strong><br />
+                        &emsp;<asp:DropDownList ID="ddlSize" runat="server">
                             <asp:ListItem Value="--Choose--">--Choose--</asp:ListItem>
                             <asp:ListItem>(Shirt Sizes)</asp:ListItem>
                             <asp:ListItem>XXS</asp:ListItem>
@@ -75,12 +86,11 @@
                         <asp:RequiredFieldValidator ID="rfvSize" runat="server" InitialValue="--Choose--" ControlToValidate="ddlSize" Display="Dynamic" ErrorMessage="SizeRequired">A size is required.</asp:RequiredFieldValidator>
                     </p>
                 <br />
-                <br />
 
                 <!-- Named? T/F -->
                     <p>
-                        <strong>Named?<sup>*</sup>:</strong><br />
-                        <asp:DropDownList ID="ddlNamed" runat="server">
+                        &emsp;<strong>Named?<sup>*</sup>:</strong><br />
+                        &emsp;<asp:DropDownList ID="ddlNamed" runat="server">
                             <asp:ListItem Value="--Choose--">--Choose--</asp:ListItem>
                             <asp:ListItem>Yes</asp:ListItem>
                             <asp:ListItem>No</asp:ListItem>
@@ -88,21 +98,19 @@
                          <asp:RequiredFieldValidator ID="rfvNamed" runat="server" InitialValue="--Choose--" ControlToValidate="ddlNamed" Display="Dynamic" ErrorMessage="AnswerRequired">Please choose an option.</asp:RequiredFieldValidator>
                     </p>
                 <br />
-                <br />
 
                 <!-- If "Yes", Name? -->
                     <p>
-                        <strong>(Optional) Name? (leave blank if no name)<sup>*</sup>:</strong><br />
-                        <asp:TextBox ID="txtName" runat="server" Height="24px" Width="340px"></asp:TextBox>
+                        &emsp;<strong>(Optional) Name? (leave blank if no name):</strong><br />
+                        &emsp;<asp:TextBox ID="txtName" runat="server" Height="24px" Width="340px"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="revName" runat="server" ControlToValidate="txtName" ErrorMessage="RegularExpressionValidator" ValidationExpression="^[A-Z a-z]*$">Name cannot contain numbers.</asp:RegularExpressionValidator>
                     </p>
-                <br />
                 <br />
 
                 <!-- Submit -->
                     <p>
-                        <asp:Button ID="btnSubmit" runat="server" Height="25px" Text="Submit" Width="100px" />
+                        &emsp;<asp:Button ID="btnSubmit" runat="server" Height="25px" Text="Submit" Width="100px" />
                     </p>
-                <br />
                 <br />
                 </asp:Panel>
             </form>

@@ -43,15 +43,16 @@ Public Class index
         Dim sqlCmd As SqlCommand
         Dim sqlConn As New SqlConnection(strConn)
 
-        ' Convert Yes/No into boolean
-        Dim bitNamed As Boolean
-
-        If strNamed = "Yes" Then
-            bitNamed = True
-        Else bitNamed = False
-        End If
 
         Try
+
+            ' Check if record already exists
+            If RecordExists(strItem, strBrand, strColour, strSize, strNamed, strName) = True Then
+                plhError.Controls.Add(New LiteralControl("<div class=""error"">This is identical to an existing listing. Please try again.</div>"))
+                Exit Sub
+            End If
+
+
             ' Open connection
             sqlConn.Open()
             sqlCmd = New SqlCommand(strSQL, sqlConn)
@@ -61,7 +62,7 @@ Public Class index
                 .AddWithValue("@brand", strBrand)
                 .AddWithValue("@colour", strColour)
                 .AddWithValue("@size", strSize)
-                .AddWithValue("@named", bitNamed)
+                .AddWithValue("@named", strNamed)
                 .AddWithValue("@name", strName)
             End With
 
@@ -84,7 +85,7 @@ Public Class index
 
         End Try
 
-        Call SetSessionID(strItem, strBrand, strColour, strSize, bitNamed, strName)
+        Call SetSessionID(strItem, strBrand, strColour, strSize, strNamed, strName)
         ' Redirect the user to feedback page
         Response.Redirect("success.aspx")
 
@@ -114,7 +115,7 @@ Public Class index
     ''' <param name="strSize">Size from the form</param>
     ''' <param name="bitNamed">Yes/No properties of Named from the form</param>
     ''' <param name="strName">Name from the form</param>
-    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, bitNamed As String, strName As String)
+    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String)
         ' Create new sql statement 
         Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
 
@@ -128,11 +129,13 @@ Public Class index
             .AddWithValue("@brand", strBrand)
             .AddWithValue("@colour", strColour)
             .AddWithValue("@size", strSize)
-            .AddWithValue("@named", bitNamed)
+            .AddWithValue("@named", strNamed)
             .AddWithValue("@name", strName)
         End With
 
         sqlCmd.CommandText = strSQL
+
+        ' Run query
         Dim ds As DataSet = QueryDB(sqlCmd)
 
         ' Check a row has been returned.
@@ -143,4 +146,36 @@ Public Class index
             Session("LID") = intID
         End If
     End Sub
+
+    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String) As Boolean
+        ' Create new sql statement 
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
+
+        ' Objects for communication with database
+        Dim sqlCmd As New SqlCommand
+
+        ' Complete query
+        With sqlCmd.Parameters
+            .AddWithValue("@item", strItem)
+            .AddWithValue("@brand", strBrand)
+            .AddWithValue("@colour", strColour)
+            .AddWithValue("@size", strSize)
+            .AddWithValue("@named", strNamed)
+            .AddWithValue("@name", strName)
+        End With
+
+        sqlCmd.CommandText = strSQL
+
+        ' Run query
+        Dim ds As DataSet = QueryDB(sqlCmd)
+
+        ' Check a row has been returned.
+        If ds.Tables(0).Rows.Count > 0 Then
+            Return True
+        End If
+
+        Return False
+
+    End Function
+
 End Class
