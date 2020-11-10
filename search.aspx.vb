@@ -79,6 +79,24 @@ Public Class search
     End Sub
 
     ''' <summary>
+    ''' This sub creates an sql SELECT statement based on user input for Size field. It runs the query and adds the results to the session object.
+    '''     The user is redirected to a results page to view the data in an html table.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Protected Sub btnPhoneSearch_Click(sender As Object, e As EventArgs) Handles btnPhoneSearch.Click
+        ' Set up query
+        Dim strSQL As String = "SELECT * FROM tblLostProp WHERE [Phone] = @phone;"
+        Dim sqlCmd As New SqlCommand(strSQL)
+
+        ' Complete query and set sql command
+        sqlCmd.Parameters.AddWithValue("@phone", txtPhone.Text)
+
+        Call SetSession(sqlCmd)
+
+    End Sub
+
+    ''' <summary>
     ''' This sub creates an sql SELECT statement based on user input for Named field. It runs the query and adds the results to the session object.
     '''     The user is redirected to a results page to view the data in an html table.
     ''' </summary>

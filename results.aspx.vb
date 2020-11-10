@@ -33,8 +33,10 @@
         strBuilder.Append("<th class=""results"">Brand</th>")
         strBuilder.Append("<th class=""results"">Colour</th>")
         strBuilder.Append("<th class=""results"">Size</th>")
+        strBuilder.Append("<th class=""results"">DateAdded</th>")
         strBuilder.Append("<th class=""results"">Named</th>")
         strBuilder.Append("<th class=""results"">Name</th>")
+        strBuilder.Append("<th class=""results"">Phone</th>")
 
         'Close header row
         strBuilder.Append("</tr>")
@@ -50,6 +52,9 @@
             strBuilder.Append("<td class=""results"">" & row(4) & "</td>")
             strBuilder.Append("<td class=""results"">" & row(5) & "</td>")
             strBuilder.Append("<td class=""results"">" & row(6) & "</td>")
+            strBuilder.Append("<td class=""results"">" & row(7) & "</td>")
+            strBuilder.Append("<td class=""results"">" & row(8) & "</td>")
+
             ' Close table row
             strBuilder.Append("</tr>")
         Next

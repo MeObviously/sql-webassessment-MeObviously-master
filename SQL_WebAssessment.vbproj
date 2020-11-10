@@ -99,6 +99,7 @@
     <Content Include="App_Data\dbLostProperty_log.ldf">
       <DependentUpon>dbLostProperty.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\SQLQuery1.sql" />
     <Content Include="contact.aspx" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\st_callahan_custom.css" />
@@ -108,7 +109,6 @@
     <Content Include="index.html" />
     <Content Include="results.aspx" />
     <Content Include="search.aspx" />
-    <Content Include="App_Data\SQLLoadDataQuery.sql" />
     <Content Include="success.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

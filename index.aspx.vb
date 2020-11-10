@@ -34,20 +34,26 @@ Public Class index
         Dim strBrand As String = txtBrand.Text
         Dim strColour As String = txtColour.Text
         Dim strSize As String = ddlSize.Text
+        Dim strDateFound As String = txtDateFound.Text
         Dim strNamed As String = ddlNamed.Text
         Dim strName As String = txtName.Text
+        Dim strPhone As String = txtPhone.Text
+
+        ' Setup to parse user input into a date
+        Dim provider As System.Globalization.CultureInfo = System.Globalization.CultureInfo.InvariantCulture
+        Dim dteNewDateFound As New Date()
+        dteNewDateFound = Date.ParseExact(txtDateFound.Text, "dd/mm/yyyy", provider)
 
         ' Inset new record
-        Dim strSQL As String = "INSERT INTO tblLostProp ([Item], [Brand], [Colour], [Size], [Named], [Name]) VALUES ("
-        strSQL &= "@item, @brand, @colour, @size, @named, @name)"
+        Dim strSQL As String = "INSERT INTO tblLostProp ([Item], [Brand], [Colour], [Size], [DateFound], [Named], [Name], [Phone]) VALUES ("
+        strSQL &= "@item, @brand, @colour, @size, @datefound, @named, @name, @phone)"
         Dim sqlCmd As SqlCommand
         Dim sqlConn As New SqlConnection(strConn)
-
 
         Try
 
             ' Check if record already exists
-            If RecordExists(strItem, strBrand, strColour, strSize, strNamed, strName) = True Then
+            If RecordExists(strItem, strBrand, strColour, strSize, strDateFound, strNamed, strName, strPhone) = True Then
                 plhError.Controls.Add(New LiteralControl("<div class=""error"">This is identical to an existing listing. Please try again.</div>"))
                 Exit Sub
             End If
@@ -62,8 +68,10 @@ Public Class index
                 .AddWithValue("@brand", strBrand)
                 .AddWithValue("@colour", strColour)
                 .AddWithValue("@size", strSize)
+                .AddWithValue("@datefound", strDateFound)
                 .AddWithValue("@named", strNamed)
                 .AddWithValue("@name", strName)
+                .AddWithValue("@phone", strPhone)
             End With
 
             ' Execute query 
@@ -85,7 +93,7 @@ Public Class index
 
         End Try
 
-        Call SetSessionID(strItem, strBrand, strColour, strSize, strNamed, strName)
+        Call SetSessionID(strItem, strBrand, strColour, strSize, strDateFound, strNamed, strName, strPhone)
         ' Redirect the user to feedback page
         Response.Redirect("success.aspx")
 
@@ -100,8 +108,10 @@ Public Class index
         txtBrand.Text = ""
         txtColour.Text = ""
         ddlSize.Text = "--Choose--"
+        txtDateFound.Text = ""
         ddlNamed.Text = "--Choose--"
         txtName.Text = ""
+        txtPhone.Text = ""
 
     End Sub
 
@@ -113,11 +123,12 @@ Public Class index
     ''' <param name="strBrand">Brand from the form</param>
     ''' <param name="strColour">Colours from the forms</param>
     ''' <param name="strSize">Size from the form</param>
-    ''' <param name="bitNamed">Yes/No properties of Named from the form</param>
+    ''' <param name="strDateFound">Date Found from the forms</param>
+    ''' <param name="strNamed">Yes/No properties of Named from the form</param>
     ''' <param name="strName">Name from the form</param>
-    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String)
+    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, strDateFound As String, strNamed As String, strName As String, strPhone As String)
         ' Create new sql statement 
-        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [DateFound] = @datefound AND [Named] = @named AND [Name] = @name"
 
         ' Objects for communication with database
         Dim sqlCmd As New SqlCommand
@@ -129,8 +140,10 @@ Public Class index
             .AddWithValue("@brand", strBrand)
             .AddWithValue("@colour", strColour)
             .AddWithValue("@size", strSize)
+            .AddWithValue("@datefound", strDateFound)
             .AddWithValue("@named", strNamed)
             .AddWithValue("@name", strName)
+            .AddWithValue("@phone", strPhone)
         End With
 
         sqlCmd.CommandText = strSQL
@@ -147,9 +160,9 @@ Public Class index
         End If
     End Sub
 
-    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String) As Boolean
+    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String) As Boolean
         ' Create new sql statement 
-        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name"
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [DateFound] = @datefound AND [Named] = @named AND [Name] = @name AND [Phone] = @phone"
 
         ' Objects for communication with database
         Dim sqlCmd As New SqlCommand
@@ -160,8 +173,10 @@ Public Class index
             .AddWithValue("@brand", strBrand)
             .AddWithValue("@colour", strColour)
             .AddWithValue("@size", strSize)
+            .AddWithValue("@datefound", strDateFound)
             .AddWithValue("@named", strNamed)
             .AddWithValue("@name", strName)
+            .AddWithValue("@phone", strPhone)
         End With
 
         sqlCmd.CommandText = strSQL

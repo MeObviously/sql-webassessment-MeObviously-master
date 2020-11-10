@@ -140,6 +140,33 @@ Partial Public Class index
     Protected WithEvents rfvSize As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
+    '''txtDateFound control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtDateFound As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''rfvDateFound control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rfvDateFound As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''RegularExpressionValidator1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RegularExpressionValidator1 As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''ddlNamed control.
     '''</summary>
     '''<remarks>
@@ -174,6 +201,24 @@ Partial Public Class index
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents revName As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''txtPhone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPhone As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''revPhone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revPhone As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
     '''btnSubmit control.
