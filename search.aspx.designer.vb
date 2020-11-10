@@ -228,4 +228,31 @@ Partial Public Class search
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents revName As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
+    '''txtPhone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtPhone As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btnPhoneSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btnPhoneSearch As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''revPhone control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents revPhone As Global.System.Web.UI.WebControls.RegularExpressionValidator
 End Class

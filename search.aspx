@@ -136,6 +136,20 @@
                 <!-- End Name Search -->
                 <br />
 
+                 <!-- Start Phone -->
+                <div class="one">
+                    <p>
+                        &emsp;Phone:&emsp;&emsp;
+                        <asp:TextBox ID="txtPhone" runat="server" height="25px" width="340px"></asp:TextBox>
+                         &nbsp;&nbsp;
+                        <asp:Button ID="btnPhoneSearch" runat="server" Height="25px" OnClick="btnPhoneSearch_Click" Text="Search Phone" ValidationGroup="Val7" Width="125px" />
+                        <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhone" ValidationGroup="Val7" ErrorMessage="RegularExpressionValidator" ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">A valid phone number is required.</asp:RegularExpressionValidator>
+                    </p>
+                </div>
+                <!-- End Phone -->
+                     
+                <br />
+
             </form>
         </asp:Panel>
     </div>

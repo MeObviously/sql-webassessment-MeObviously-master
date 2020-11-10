@@ -53,7 +53,7 @@ Public Class index
         Try
 
             ' Check if record already exists
-            If RecordExists(strItem, strBrand, strColour, strSize, strDateFound, strNamed, strName, strPhone) = True Then
+            If RecordExists(strItem, strBrand, strColour, strSize, strNamed, strName, strPhone, strDateFound) = True Then
                 plhError.Controls.Add(New LiteralControl("<div class=""error"">This is identical to an existing listing. Please try again.</div>"))
                 Exit Sub
             End If
@@ -160,7 +160,7 @@ Public Class index
         End If
     End Sub
 
-    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String) As Boolean
+    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String, strDateFound As String) As Boolean
         ' Create new sql statement 
         Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [DateFound] = @datefound AND [Named] = @named AND [Name] = @name AND [Phone] = @phone"
 

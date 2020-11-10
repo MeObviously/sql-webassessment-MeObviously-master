@@ -33,10 +33,10 @@
         strBuilder.Append("<th class=""results"">Brand</th>")
         strBuilder.Append("<th class=""results"">Colour</th>")
         strBuilder.Append("<th class=""results"">Size</th>")
-        strBuilder.Append("<th class=""results"">DateAdded</th>")
         strBuilder.Append("<th class=""results"">Named</th>")
         strBuilder.Append("<th class=""results"">Name</th>")
         strBuilder.Append("<th class=""results"">Phone</th>")
+        strBuilder.Append("<th class=""results"">DateAdded</th>")
 
         'Close header row
         strBuilder.Append("</tr>")
