@@ -24,43 +24,55 @@
         ' StringBuilder to create table
         Dim strBuilder As StringBuilder = New StringBuilder()
 
-        ' Create table
-        strBuilder.Append("<table class=""results"">")
+        ' Check count of records in ds
+        If ds.Tables.Count = 0 Or ds.Tables(0).Rows.Count < 1 Then
+            strBuilder.Append("<h2>There are no records associated with that search value.</h2>")
+        Else
 
-        ' Add table header row
-        strBuilder.Append("<tr class=""results"">")
-        strBuilder.Append("<th class=""results"">Item</th>")
-        strBuilder.Append("<th class=""results"">Brand</th>")
-        strBuilder.Append("<th class=""results"">Colour</th>")
-        strBuilder.Append("<th class=""results"">Size</th>")
-        strBuilder.Append("<th class=""results"">Named</th>")
-        strBuilder.Append("<th class=""results"">Name</th>")
-        strBuilder.Append("<th class=""results"">Phone</th>")
-        strBuilder.Append("<th class=""results"">DateAdded</th>")
 
-        'Close header row
-        strBuilder.Append("</tr>")
+            ' Create table
+            strBuilder.Append("<table class=""results"">")
 
-        ' Loop through rows to display.
-        'At the moment, this should only display one record, bnut we may choose to display multiple records at a later data.
-        For Each row As DataRow In ds.Tables(0).Rows
-            ' Add table row 
+            ' Add table header row
             strBuilder.Append("<tr class=""results"">")
-            strBuilder.Append("<td class=""results"">" & row(1) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(2) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(3) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(4) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(5) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(6) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(7) & "</td>")
-            strBuilder.Append("<td class=""results"">" & row(8) & "</td>")
+            strBuilder.Append("<th class=""results"">Item</th>")
+            strBuilder.Append("<th class=""results"">Brand</th>")
+            strBuilder.Append("<th class=""results"">Colour</th>")
+            strBuilder.Append("<th class=""results"">Size</th>")
+            strBuilder.Append("<th class=""results"">Named</th>")
+            strBuilder.Append("<th class=""results"">Name</th>")
+            strBuilder.Append("<th class=""results"">Phone</th>")
+            strBuilder.Append("<th class=""results"">DateAdded</th>")
 
-            ' Close table row
+            'Close header row
             strBuilder.Append("</tr>")
-        Next
 
-        'Close table
-        strBuilder.Append("</table>")
+            ' Loop through rows to display.
+            For Each row As DataRow In ds.Tables(0).Rows
+
+                ' These are formatting dates
+                Dim strDateFormat As String = "dd/MM/yyyy"
+                Dim datDateFound As Date = Date.Parse(row(8).ToString)
+
+                ' Add table row 
+                strBuilder.Append("<tr class=""results"">")
+                strBuilder.Append("<td class=""results"">" & row(1) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(2) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(3) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(4) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(5) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(6) & "</td>")
+                strBuilder.Append("<td class=""results"">" & row(7) & "</td>")
+                strBuilder.Append("<td class=""results"">" & datDateFound.ToString(strDateFormat) & "</td>")
+
+                ' Close table row
+                strBuilder.Append("</tr>")
+            Next
+
+            'Close table
+            strBuilder.Append("</table>")
+
+        End If
 
 
         ' Link to return to search 

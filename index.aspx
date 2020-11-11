@@ -99,7 +99,7 @@
                     &emsp;<strong>Date Found (dd/mm/yyyy)<sup>*</sup>:</strong><br />
                     &emsp;<asp:TextBox ID="txtDateFound" runat="server" height="24px" width="340px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvDateFound" runat="server" ControlToValidate="txtDateFound" Display="Dynamic" ErrorMessage="DateRequired">A date is required.</asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtBrand" ErrorMessage="RegularExpressionValidator" ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[- /.](0?[1-9]|1[012])[- /.](19|20)[0-9][0-9]$">Please enter a valid date.</asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtDateFound" ErrorMessage="RegularExpressionValidator" ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[- /.](0?[1-9]|1[012])[- /.](19|20)[0-9][0-9]$">Please enter a valid date.</asp:RegularExpressionValidator>
                 </p>
                 <!-- End DateAdded -->
 

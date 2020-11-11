@@ -24,6 +24,8 @@ Public Class success
         strBuilder.Append("<th class=""results"">Size</th>")
         strBuilder.Append("<th class=""results"">Named</th>")
         strBuilder.Append("<th class=""results"">Name</th>")
+        strBuilder.Append("<th class=""results"">Phone</th>")
+        strBuilder.Append("<th class=""results"">DateFound</th>")
 
         'Close header row
         strBuilder.Append("</tr>")
@@ -39,6 +41,11 @@ Public Class success
         ' Loop through rows to display.
         'At the moment, this should only display one record, bnut we may choose to display multiple records at a later data.
         For Each row As DataRow In ds.Tables(0).Rows
+
+            ' These are formatting dates
+            Dim strDateFormat As String = "dd/MM/yyyy"
+            Dim datDateFound As Date = Date.Parse(row(8).ToString)
+
             ' Add table row 
             strBuilder.Append("<tr class=""results"">")
             strBuilder.Append("<td class=""results"">" & row(1) & "</td>")
@@ -47,6 +54,9 @@ Public Class success
             strBuilder.Append("<td class=""results"">" & row(4) & "</td>")
             strBuilder.Append("<td class=""results"">" & row(5) & "</td>")
             strBuilder.Append("<td class=""results"">" & row(6) & "</td>")
+            strBuilder.Append("<td class=""results"">" & row(7) & "</td>")
+            strBuilder.Append("<td class=""results"">" & datDateFound.ToString(strDateFormat) & "</td>")
+
             ' Close table row
             strBuilder.Append("</tr>")
         Next

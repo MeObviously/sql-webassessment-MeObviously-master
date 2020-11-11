@@ -7,7 +7,7 @@ Public Class search
 
     End Sub
     ''' <summary>
-    '''     This sub creates an sql SELECT statement based on user input. It runs the query and adds the results to the session object.
+    '''     This sub creates an sql SELECT statement based on user input for Item field. It runs the query and adds the results to the session object.
     '''     The user is redirected to a results page to view the data in an html table.
     ''' </summary>
     ''' <param name="sender"></param>
@@ -43,7 +43,7 @@ Public Class search
     End Sub
 
     ''' <summary>
-    ''' This sub creates an sql SELECT statement based on user input Colour field. It runs the query and adds the results to the session object.
+    ''' This sub creates an sql SELECT statement based on user input for Colour field. It runs the query and adds the results to the session object.
     '''     The user is redirected to a results page to view the data in an html table.
     ''' </summary>
     ''' <param name="sender"></param>
@@ -73,24 +73,6 @@ Public Class search
 
         ' Complete query and set sql command
         sqlCmd.Parameters.AddWithValue("@size", ddlSize.Text)
-
-        Call SetSession(sqlCmd)
-
-    End Sub
-
-    ''' <summary>
-    ''' This sub creates an sql SELECT statement based on user input for Size field. It runs the query and adds the results to the session object.
-    '''     The user is redirected to a results page to view the data in an html table.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    Protected Sub btnPhoneSearch_Click(sender As Object, e As EventArgs) Handles btnPhoneSearch.Click
-        ' Set up query
-        Dim strSQL As String = "SELECT * FROM tblLostProp WHERE [Phone] = @phone;"
-        Dim sqlCmd As New SqlCommand(strSQL)
-
-        ' Complete query and set sql command
-        sqlCmd.Parameters.AddWithValue("@phone", txtPhone.Text)
 
         Call SetSession(sqlCmd)
 
@@ -131,6 +113,42 @@ Public Class search
         Call SetSession(sqlCmd)
 
     End Sub
+
+    ''' <summary>
+    ''' This sub creates an sql SELECT statement based on user input for Phone field. It runs the query and adds the results to the session object.
+    '''     The user is redirected to a results page to view the data in an html table.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Protected Sub btnPhoneSearch_Click(sender As Object, e As EventArgs) Handles btnPhoneSearch.Click
+        ' Set up query
+        Dim strSQL As String = "SELECT * FROM tblLostProp WHERE [Phone] = @phone;"
+        Dim sqlCmd As New SqlCommand(strSQL)
+
+        ' Complete query and set sql command
+        sqlCmd.Parameters.AddWithValue("@phone", txtPhone.Text)
+
+        Call SetSession(sqlCmd)
+
+    End Sub
+
+    ''' <summary>
+    ''' This sub creates an sql SELECT statement based on user input for Size field. It runs the query and adds the results to the session object.
+    '''     The user is redirected to a results page to view the data in an html table.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    'Protected Sub btnDateFoundSearch_Click(sender As Object, e As EventArgs) Handles btnDateFoundSearch.Click
+    '    ' Set up query
+    '    Dim strSQL As String = "SELECT * FROM tblLostProp WHERE [DateFound] = @phone;"
+    '    Dim sqlCmd As New SqlCommand(strSQL)
+
+    '    ' Complete query and set sql command
+    '    sqlCmd.Parameters.AddWithValue("@phone", txtPhone.Text)
+
+    '    Call SetSession(sqlCmd)
+
+    'End Sub
 
     Private Sub SetSession(sqlCmd As SqlCommand)
         ' Run query 

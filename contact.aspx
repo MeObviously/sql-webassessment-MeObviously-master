@@ -16,8 +16,8 @@
                 For further information, contact us at:
 
                     <ul>
-                        Phone: 64 1 324 3546<br />
-                        Email: stcallahancollege@decoymail.com
+                        <strong>Phone:</strong> 64 1 324 3546<br />
+                        <strong>Email:</strong> stcallahancollege@decoymail.com
                     </ul>
             </p>
             <br />

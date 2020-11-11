@@ -34,15 +34,14 @@ Public Class index
         Dim strBrand As String = txtBrand.Text
         Dim strColour As String = txtColour.Text
         Dim strSize As String = ddlSize.Text
-        Dim strDateFound As String = txtDateFound.Text
         Dim strNamed As String = ddlNamed.Text
         Dim strName As String = txtName.Text
         Dim strPhone As String = txtPhone.Text
+        Dim intID As Integer = -5
 
         ' Setup to parse user input into a date
         Dim provider As System.Globalization.CultureInfo = System.Globalization.CultureInfo.InvariantCulture
         Dim dteNewDateFound As New Date()
-        dteNewDateFound = Date.ParseExact(txtDateFound.Text, "dd/mm/yyyy", provider)
 
         ' Inset new record
         Dim strSQL As String = "INSERT INTO tblLostProp ([Item], [Brand], [Colour], [Size], [DateFound], [Named], [Name], [Phone]) VALUES ("
@@ -51,9 +50,13 @@ Public Class index
         Dim sqlConn As New SqlConnection(strConn)
 
         Try
+            ' Parse user input in DateFound object
+            dteNewDateFound = Date.ParseExact(txtDateFound.Text, "dd/mm/yyyy", provider)
 
             ' Check if record already exists
-            If RecordExists(strItem, strBrand, strColour, strSize, strNamed, strName, strPhone, strDateFound) = True Then
+            intID = CheckRecords(strItem, strBrand, strColour, strSize, strNamed, strName, strPhone, dteNewDateFound)
+
+            If intID <> -1 Then
                 plhError.Controls.Add(New LiteralControl("<div class=""error"">This is identical to an existing listing. Please try again.</div>"))
                 Exit Sub
             End If
@@ -68,7 +71,7 @@ Public Class index
                 .AddWithValue("@brand", strBrand)
                 .AddWithValue("@colour", strColour)
                 .AddWithValue("@size", strSize)
-                .AddWithValue("@datefound", strDateFound)
+                .AddWithValue("@datefound", dteNewDateFound)
                 .AddWithValue("@named", strNamed)
                 .AddWithValue("@name", strName)
                 .AddWithValue("@phone", strPhone)
@@ -80,6 +83,10 @@ Public Class index
             ' Success message for user
             'MsgBox("Your listing has been accepted.",, "St Callahan's College")
             Call ClearForm()
+
+        Catch fex As FormatException
+            MsgBox("You have entered an invalid date. Please check your entry and try again.")
+            Exit Sub
 
         Catch ex As Exception
             ' Failure message for user
@@ -93,7 +100,10 @@ Public Class index
 
         End Try
 
-        Call SetSessionID(strItem, strBrand, strColour, strSize, strDateFound, strNamed, strName, strPhone)
+        ' Set Session object
+        intID = CheckRecords(strItem, strBrand, strColour, strSize, strNamed, strName, strPhone, dteNewDateFound)
+        Session("LID") = intID
+
         ' Redirect the user to feedback page
         Response.Redirect("success.aspx")
 
@@ -116,53 +126,25 @@ Public Class index
     End Sub
 
     ''' <summary>
-    ''' Uses the user input to rettrieve the ID of the latest record saved to the database.
-    ''' It then adds the ID to the session object for use on the success page.
+    ''' Uses user input the retrieve the ID of the latest record saved to the database. It then adds the ID to the session object for use on the success page
     ''' </summary>
-    ''' <param name="strItem">Item from the form</param>
-    ''' <param name="strBrand">Brand from the form</param>
-    ''' <param name="strColour">Colours from the forms</param>
-    ''' <param name="strSize">Size from the form</param>
-    ''' <param name="strDateFound">Date Found from the forms</param>
-    ''' <param name="strNamed">Yes/No properties of Named from the form</param>
-    ''' <param name="strName">Name from the form</param>
-    Private Sub SetSessionID(strItem As String, strBrand As String, strColour As String, strSize As String, strDateFound As String, strNamed As String, strName As String, strPhone As String)
+    ''' <param name="strItem"> Item from the form </param>
+    ''' <param name="strBrand"> Brand from the form </param>
+    ''' <param name="strColour"> Colour from the form </param>
+    ''' <param name="strSize"> Size from the form </param>
+    ''' <param name="strNamed"> Named from the form</param>
+    ''' <param name="strName"> Name from the form </param>
+    ''' <param name="strPhone"> Phone from the form </param>
+    ''' <param name="datDateFound"> DateFound from the form </param>
+    ''' <returns> -1 if record doesn't exist, or the record ID if it does exist </returns>
+    Private Function CheckRecords(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String, datDateFound As Date) As Integer
         ' Create new sql statement 
-        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [DateFound] = @datefound AND [Named] = @named AND [Name] = @name"
 
-        ' Objects for communication with database
-        Dim sqlCmd As New SqlCommand
+        ' full version with DateFound check
+        'Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name AND [Phone] = @phone AND [DateFound] = @datefound"
 
-
-        ' Complete query
-        With sqlCmd.Parameters
-            .AddWithValue("@item", strItem)
-            .AddWithValue("@brand", strBrand)
-            .AddWithValue("@colour", strColour)
-            .AddWithValue("@size", strSize)
-            .AddWithValue("@datefound", strDateFound)
-            .AddWithValue("@named", strNamed)
-            .AddWithValue("@name", strName)
-            .AddWithValue("@phone", strPhone)
-        End With
-
-        sqlCmd.CommandText = strSQL
-
-        ' Run query
-        Dim ds As DataSet = QueryDB(sqlCmd)
-
-        ' Check a row has been returned.
-        If ds.Tables(0).Rows.Count > 0 Then
-            Dim intID As Integer = ds.Tables(0).Rows(0).Item(0)
-
-            ' Set Seesion object 
-            Session("LID") = intID
-        End If
-    End Sub
-
-    Private Function RecordExists(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String, strDateFound As String) As Boolean
-        ' Create new sql statement 
-        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [DateFound] = @datefound AND [Named] = @named AND [Name] = @name AND [Phone] = @phone"
+        ' limited version without DateFound check (as issues matching dates)
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name AND [Phone] = @phone "
 
         ' Objects for communication with database
         Dim sqlCmd As New SqlCommand
@@ -173,10 +155,10 @@ Public Class index
             .AddWithValue("@brand", strBrand)
             .AddWithValue("@colour", strColour)
             .AddWithValue("@size", strSize)
-            .AddWithValue("@datefound", strDateFound)
             .AddWithValue("@named", strNamed)
             .AddWithValue("@name", strName)
             .AddWithValue("@phone", strPhone)
+            .AddWithValue("@datefound", datDateFound)
         End With
 
         sqlCmd.CommandText = strSQL
@@ -186,10 +168,11 @@ Public Class index
 
         ' Check a row has been returned.
         If ds.Tables(0).Rows.Count > 0 Then
-            Return True
+            Return ds.Tables(0).Rows(0).Item(0)
+
         End If
 
-        Return False
+        Return -1
 
     End Function
 
