@@ -51,7 +51,7 @@
             For Each row As DataRow In ds.Tables(0).Rows
 
                 ' These are formatting dates
-                Dim strDateFormat As String = "dd/MM/yyyy"
+                Dim strDateFormat As String = "yyyy/MM/dd"
                 Dim datDateFound As Date = Date.Parse(row(8).ToString)
 
                 ' Add table row 

@@ -105,6 +105,25 @@
     <Content Include="css\st_callahan_custom.css" />
     <Content Include="footer.html" />
     <Content Include="header_nav.html" />
+    <Content Include="images\200923-1428-TableFirstDraft.JPG" />
+    <Content Include="images\201102-1121-CSSSetup.JPG" />
+    <Content Include="images\201103-1923-CommentsAndParaTagsAddedToFormControls.JPG" />
+    <Content Include="images\201103-2023-FormTagMovedToFixError.JPG" />
+    <Content Include="images\201107-2134-ErrorTestingOnListItem.JPG" />
+    <Content Include="images\201108-1319-InsertsFinishedPart1.JPG" />
+    <Content Include="images\201108-1320-InsertsFinishedPart2.JPG" />
+    <Content Include="images\201108-1322-WebFormFirstDraft.JPG" />
+    <Content Include="images\201108-1335-DatabaseLoadsDataFromQueryInMultiRowFormat.JPG" />
+    <Content Include="images\201108-1518-TableSecondDraft.JPG" />
+    <Content Include="images\201108-1613-CSSStylesheetConfigForResultsTable.JPG" />
+    <Content Include="images\201108-1627-TestingInsertIntoDatabaseTablePassed.JPG" />
+    <Content Include="images\201108-1809-HardCodedResultsTableIntoSuccessPage.JPG" />
+    <Content Include="images\201108-1815-InsertRecordCodePart1.JPG" />
+    <Content Include="images\201108-1816-ClearFormCode.JPG" />
+    <Content Include="images\201108-1816-InsertRecordCodePart2.JPG" />
+    <Content Include="images\201108-1817-SetSessionIDCodePart1.JPG" />
+    <Content Include="images\201108-1817-SetSessionIDCodePart2.JPG" />
+    <Content Include="images\201108-1819-ExtraFieldsAddedToSizeDDL.JPG" />
     <Content Include="index.aspx" />
     <Content Include="index.html" />
     <Content Include="results.aspx" />
@@ -195,9 +214,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

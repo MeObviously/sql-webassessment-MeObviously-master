@@ -51,7 +51,7 @@ Public Class index
 
         Try
             ' Parse user input in DateFound object
-            dteNewDateFound = Date.ParseExact(txtDateFound.Text, "dd/mm/yyyy", provider)
+            dteNewDateFound = Date.ParseExact(txtDateFound.Text, "dd/MM/yyyy", provider)
 
             ' Check if record already exists
             intID = CheckRecords(strItem, strBrand, strColour, strSize, strNamed, strName, strPhone, dteNewDateFound)
@@ -71,10 +71,10 @@ Public Class index
                 .AddWithValue("@brand", strBrand)
                 .AddWithValue("@colour", strColour)
                 .AddWithValue("@size", strSize)
-                .AddWithValue("@datefound", dteNewDateFound)
                 .AddWithValue("@named", strNamed)
                 .AddWithValue("@name", strName)
                 .AddWithValue("@phone", strPhone)
+                .AddWithValue("@datefound", dteNewDateFound)
             End With
 
             ' Execute query 
@@ -118,10 +118,10 @@ Public Class index
         txtBrand.Text = ""
         txtColour.Text = ""
         ddlSize.Text = "--Choose--"
-        txtDateFound.Text = ""
         ddlNamed.Text = "--Choose--"
         txtName.Text = ""
         txtPhone.Text = ""
+        txtDateFound.Text = ""
 
     End Sub
 
@@ -140,11 +140,7 @@ Public Class index
     Private Function CheckRecords(strItem As String, strBrand As String, strColour As String, strSize As String, strNamed As String, strName As String, strPhone As String, datDateFound As Date) As Integer
         ' Create new sql statement 
 
-        ' full version with DateFound check
-        'Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name AND [Phone] = @phone AND [DateFound] = @datefound"
-
-        ' limited version without DateFound check (as issues matching dates)
-        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name AND [Phone] = @phone "
+        Dim strSQL As String = "SELECT Id FROM tblLostProp WHERE [Item] = @item AND [Brand] = @brand AND [Colour] = @colour AND [Size] = @size AND [Named] = @named AND [Name] = @name AND [Phone] = @phone AND [DateFound] = @datefound"
 
         ' Objects for communication with database
         Dim sqlCmd As New SqlCommand
@@ -158,7 +154,7 @@ Public Class index
             .AddWithValue("@named", strNamed)
             .AddWithValue("@name", strName)
             .AddWithValue("@phone", strPhone)
-            .AddWithValue("@datefound", datDateFound)
+            .AddWithValue("@datefound", datDateFound.ToString("yyyy-MM-dd"))
         End With
 
         sqlCmd.CommandText = strSQL

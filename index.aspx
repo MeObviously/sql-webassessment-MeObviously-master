@@ -129,7 +129,7 @@
 
                 <!-- Start Phone -->
                 <p>
-                    &emsp;<strong>(Optional)Phone? (leave blank if no phone number):</strong><br />
+                    &emsp;<strong>(Optional)Phone? (***-***-****) (leave blank if no phone number):</strong><br />
                     &emsp;<asp:TextBox ID="txtPhone" runat="server" height="24px" width="340px"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtPhone" ErrorMessage="RegularExpressionValidator" ValidationExpression="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$">A valid phone number is required.</asp:RegularExpressionValidator>
                 </p>
