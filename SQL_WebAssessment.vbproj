@@ -124,6 +124,11 @@
     <Content Include="images\201108-1817-SetSessionIDCodePart1.JPG" />
     <Content Include="images\201108-1817-SetSessionIDCodePart2.JPG" />
     <Content Include="images\201108-1819-ExtraFieldsAddedToSizeDDL.JPG" />
+    <Content Include="images\201112-1245-WireframeSuccessPagePlan.JPG" />
+    <Content Include="images\201112-1246-WireframeContactPagePlan.JPG" />
+    <Content Include="images\201112-1247-WireframeSearchPagePlan.JPG" />
+    <Content Include="images\201112-1248-DatabaseTablePlanOldAndUpdated.JPG" />
+    <Content Include="images\201112-1248-WireframeIndexPagePlan.JPG" />
     <Content Include="index.aspx" />
     <Content Include="index.html" />
     <Content Include="results.aspx" />
